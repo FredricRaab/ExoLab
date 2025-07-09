@@ -1,4 +1,3 @@
-from UI import UI
 from SettingsV2 import Settings		# using V2 json
 from Sensors import Sensors
 from LCD import LCD
@@ -7,6 +6,7 @@ from Camera import Camera
 from StoreData import StoreData
 from MIOWS import MIOWS
 from AWS import AWS
+from AdafruitIO import AdafruitIO
 from time import sleep
 import datetime  # Import the datetime module to work with dates and times
 from datetime import time
@@ -66,8 +66,16 @@ try:
     miows = MIOWS()
     camera.setDeviceId(miows.getSerialNumber())
     aws.setDeviceSerialNumber(miows.getSerialNumber())
+    
+    # setup AdafruitIO
+    key = "xxxxx" # replace with your AdafruitIO key
+    name = "xxxxx" # replace with your AdafruitIO username
+    aio = AdafruitIO()
+    aio.setUserName(name)
+    aio.setUserKey(key)
+    aio.openFeeds()
 
-
+    #setup light panel parameters
     lp.setTimeOn(LightPanel.LEFT_PANEL, settings.leftPanelTimeOn)
     lp.setTimeOff(LightPanel.LEFT_PANEL, settings.leftPanelTimeOff)
     lp.setup(LightPanel.LEFT_PANEL, settings.leftPanelColor, settings.leftPanelIntensity)
