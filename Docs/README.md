@@ -10,6 +10,8 @@ The original ExoLab enclosure is based on the [standard CubeLab platform](https:
 
 While the software implementation enables interfacing to the Magnitude.io network which requires a license, it can also be used standalone.  Configuration parameters for lighting and timings are stored on the SD card in an editable JSON file, data measurements in a CSV file, and JPG images in a folder. 
 
+
+
 Additionally, this implementation enables use of [Adafruit.io](https://io.adafruit.com/), a web-based platform for storing and visualizing data from Adafruit.com.  The current implementation fits within the limits of the  free version, but could be extended to enable more command and control functions with the paid version (currently $99 per year).
 
 Software is coded in Python with the appropriate Adafruit and Raspberry libraries.  Magnitude.io’s servers do not store the JPG images, just the URL to this image.  In this implementation, images are stored on [Amazon Web Services (S3)](https://aws.amazon.com/s3/) using a free account.
